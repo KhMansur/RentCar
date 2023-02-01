@@ -28,5 +28,16 @@ namespace RentCar
                 cmd.ExecuteReaderAsync();
             }
         }
+        public async Task Delete(int id)
+        {
+            string commandText = $"DELETE FROM mashinalar WHERE ID=(@p)";
+            await using var conn = new NpgsqlConnection(connString);
+             conn.Open();
+            await using (var cmd = new NpgsqlCommand(commandText, conn))
+            {
+                cmd.Parameters.AddWithValue("p", id);
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
     }
 }
