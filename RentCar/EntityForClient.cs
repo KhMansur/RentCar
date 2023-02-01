@@ -39,5 +39,16 @@ namespace RentCar
                 }
             }
         }
+
+        public async void Delete(int id)
+        {
+            conn.Open();
+            await using (var command = new NpgsqlCommand("DELETE FROM mijoz WHERE id=(@id)", conn))
+            {
+                command.Parameters.AddWithValue("id", id);
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
