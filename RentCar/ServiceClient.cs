@@ -20,11 +20,10 @@ namespace RentCar
             var result = list.Skip((currentPage - 1)*PerPage). Take(PerPage).ToList();
             return result;
         }
-        static public List<Mijoz> Search(string str)
-        {
-            List<Mijoz> list = new List<Mijoz>();
+       // static public List<Mijoz> Search(string str)
+       // {
+           // List<Mijoz> list = new List<Mijoz>();
             //list = entity.GetAll();
-
             var result = list.Where().Take(str).ToList();
             return result;
         }

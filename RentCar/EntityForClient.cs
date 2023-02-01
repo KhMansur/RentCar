@@ -25,5 +25,30 @@ namespace RentCar
                 command.ExecuteNonQuery();
             };
         }
+
+        public async void GetAll()
+        {
+            conn.Open();
+            await using (var command = new NpgsqlCommand("Select * from mijoz", conn))
+            {
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    Console.WriteLine(reader.GetInt32(0) + " | " + reader.GetString(1) + " | " + reader.GetString(2) + " | " + reader.GetString(3));
+                }
+            }
+        }
+
+        public async void Delete(int id)
+        {
+            conn.Open();
+            await using (var command = new NpgsqlCommand("DELETE FROM mijoz WHERE id=(@id)", conn))
+            {
+                command.Parameters.AddWithValue("id", id);
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
