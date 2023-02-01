@@ -24,9 +24,15 @@ namespace RentCar
        // {
            // List<Mijoz> list = new List<Mijoz>();
             //list = entity.GetAll();
-
-           // var result = list.Where().Take(str).ToList();
-           // return result;
-        //}
+            var result = list.Where().Take(str).ToList();
+            return result;
+        }
+        static public List<Mijoz> Sort()
+        {
+            List<Mijoz> list = new List<Mijoz>();
+            //list = entity.GetAll();
+            var result = list.OrderBy(x => x.Ismi).ToList();
+            return result;
+        }
     }
 }
