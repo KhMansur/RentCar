@@ -50,5 +50,22 @@ namespace RentCar
                 command.ExecuteNonQuery();
             }
         }
-    }
+
+        public async void Getbyid(int a)
+        {
+            conn.Open();
+            await using (var command = new NpgsqlCommand("select * FROM mijoz  Where id = " + a, conn))
+            {
+
+
+
+                NpgsqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    Console.WriteLine(reader.GetInt32(0) + " | " +  reader.GetString(1) + " | " + reader.GetString(2) + " | " + reader.GetString(3));
+                }
+
+            }
+        }
 }
