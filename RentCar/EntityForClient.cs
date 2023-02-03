@@ -51,16 +51,15 @@ namespace RentCar
             }
         }
 
-        public async void Update(int id ,Mijoz mijoz)
+        public async void Update(int id, Mijoz mijoz)
         {
             conn.Open();
-            await using (var command = new NpgsqlCommand("UPDATE mijoz SET ismi = "+mijoz.Ismi+" , passport = "+ mijoz.Passport+" , guvohnomanomeri = "+ mijoz.GuvohnomaNomeri+" WHERE  = " + id + ";", conn))
+            await using (var command = new NpgsqlCommand("UPDATE mijoz SET ismi = " + mijoz.Ismi + " , passport = " + mijoz.Passport + " , guvohnomanomeri = " + mijoz.GuvohnomaNomeri + " WHERE  = " + id + ";", conn))
             {
 
                 command.ExecuteNonQuery();
             };
         }
-    }
 
         public async void Getbyid(int a)
         {
@@ -74,9 +73,10 @@ namespace RentCar
                 while (reader.Read())
                 {
 
-                    Console.WriteLine(reader.GetInt32(0) + " | " +  reader.GetString(1) + " | " + reader.GetString(2) + " | " + reader.GetString(3));
+                    Console.WriteLine(reader.GetInt32(0) + " | " + reader.GetString(1) + " | " + reader.GetString(2) + " | " + reader.GetString(3));
                 }
 
             }
         }
+    }
 }
