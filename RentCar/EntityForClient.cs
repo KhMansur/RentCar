@@ -51,6 +51,17 @@ namespace RentCar
             }
         }
 
+        public async void Update(int id ,Mijoz mijoz)
+        {
+            conn.Open();
+            await using (var command = new NpgsqlCommand("UPDATE mijoz SET ismi = "+mijoz.Ismi+" , passport = "+ mijoz.Passport+" , guvohnomanomeri = "+ mijoz.GuvohnomaNomeri+" WHERE  = " + id + ";", conn))
+            {
+
+                command.ExecuteNonQuery();
+            };
+        }
+    }
+
         public async void Getbyid(int a)
         {
             conn.Open();
