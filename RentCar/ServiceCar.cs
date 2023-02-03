@@ -17,4 +17,13 @@ namespace RentCar
             var res = list.Skip((b - 1) * a).Take(a).ToList();
             return res;
         }
+
+
+        static public List<Mashina> Search(string model)
+        {
+            List<Mashina> list = new List<Mashina>();
+            list = entity.GetAll();
+            var res = list.OrderBy(x => x.Model = model).ToList();
+            return res;
+        }
     }
